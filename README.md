@@ -1,92 +1,214 @@
-# Azure-Honeynet-
-This project involves deploying a cloud-based honeynet in Azure to attract and analyze cyber attacks. By exposing vulnerable systems, I observed attacker behavior, collected telemetry, and evaluated security hardening measures. The project demonstrates the value of honeynets for threat intelligence and incident response.
-📌 Part 1 — Setup Azure Subscription
+Azure Honeynet: Simulating Real-World Cyber Attacks
+Cloud Honeynet / SOC Project
+📘 Introduction
 
-Create a free Azure subscription:
-https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account
+This project demonstrates my experience building a cloud-based honeynet in Microsoft Azure to observe and analyze real-world cyber attacks. By intentionally exposing virtual machines to the internet, I collected valuable security telemetry that was ingested into Microsoft Sentinel for threat detection, visualization, and log analysis.
 
-If Azure does not allow you to create a free account, you may:
+This hands-on project strengthened my skills in:
 
-Create a paid subscription (be careful to shut down/delete resources to avoid charges), or
+Azure cloud architecture
 
-Join the Cyber Range (flat fee & everything is set up for you):
-https://skool.com/cyber-range
+Security operations (SOC)
 
-Once the subscription is active, sign in:
-https://portal.azure.com
+Kusto Query Language (KQL)
 
-📌 Part 2 — Create the Honeypot (Azure Virtual Machine)
-1. Create the Windows 10 VM
+Incident monitoring and detection
 
-Go to Azure Portal → Virtual Machines
+Threat intelligence enrichment
 
-Click Create
+Sentinel Workbooks & Watchlists
 
-OS: Windows 10
+🎯 Objective
 
-VM Size: choose small/cheap if running in your own subscription
+The primary objective was to deploy vulnerable cloud assets to observe:
 
-Record the username and password
+Global attack patterns
 
-2. Allow all inbound traffic
+Brute-force authentication attempts
 
-Open your VM’s Network Security Group (NSG)
+Malicious network flows
 
-Create an Inbound Rule:
+RDP/SMB/SSH exploit attempts
 
-Source: Any
+Real-time threat activity targeting exposed Azure VMs
 
-Port: Any
+This allowed me to visualize global attacker activity and practice real SOC-style log investigations using Azure Sentinel.
 
-Protocol: Any
+🛠 Technologies & Azure Components Used
+☁️ Azure Cloud Components
 
-Action: Allow
+Azure Virtual Machines (Windows & Linux)
 
-Priority: Low number (100–200)
+Azure Virtual Network (VNet)
 
-(This intentionally exposes the VM for attack — DO NOT do this in production.)
+Network Security Groups (NSGs)
 
-3. Disable Windows Firewall
+Log Analytics Workspace (LAW)
 
-Inside the VM:
+Azure Storage Account
 
-Start → wf.msc → Windows Firewall Properties → Turn Off for all profiles
+Azure Key Vault
 
-📌 Part 3 — Logging Into the VM & Inspecting Logs
-1. Generate authentication failures
+Microsoft Sentinel (SIEM)
 
-Fail login 3 times using a fake username (ex: employee).
+Microsoft Defender for Cloud
 
-2. Successfully log in
-3. Inspect the Windows Security Logs
+🔍 Monitoring & Security Tools
 
-Inside the VM:
+Windows Security Event Logs
 
-Open Event Viewer
+Linux Syslog
 
-Navigate: Windows Logs → Security
+NSG Flow Logs
 
-Find failed login events: Event ID 4625
+Sentinel Data Connectors
 
-📌 Part 4 — Log Forwarding + KQL
-1. Create a Log Analytics Workspace (LAW)
+Watchlists + GeoIP database
 
-Azure Portal → Log Analytics Workspaces → Create
+Sentinel Workbooks (Attack Map)
 
-2. Create and connect Microsoft Sentinel
+PowerShell
 
-Open the LAW
+Azure CLI
 
-Select Microsoft Sentinel → Create
+📚 Security Frameworks Referenced
 
-3. Configure Log Collection (AMA)
+NIST SP 800-53 Rev. 5 – Cloud Security Controls
 
-Go to Sentinel → Content Hub → Data connectors
+NIST SP 800-61 Rev. 2 – Incident Handling
 
-Configure Windows Security Events via AMA
+🧪 Methodology Overview
+1️⃣ Deploying the Honeynet
 
-Create the DCR (Data Collection Rule)
+Deployed multiple Azure Virtual Machines with intentionally open NSG rules to attract attackers.
 
-4. Run a KQL query
+2️⃣ Enabling Logging
 
-In Logs (either LAW or Sentinel):
+Sent logs from Windows, Linux, and NSGs into a Log Analytics Workspace.
+
+3️⃣ Connecting Microsoft Sentinel
+
+Sentinel was configured to ingest data, run analytics rules, and visualize real-time attacker activity.
+
+4️⃣ GeoIP Enrichment
+
+A large GeoIP watchlist (54k+ rows) was imported into Sentinel, allowing IP-to-country mapping.
+
+5️⃣ KQL Log Analysis
+
+Used KQL to:
+
+Identify failed logons
+
+Detect SSH/RDP brute-force attempts
+
+Map inbound attacker IP addresses
+
+Build attack visualizations
+
+🌍 Global Attack Map (Sentinel Workbook)
+
+Below is the attack map generated directly from my Azure honeynet data. It visualizes all malicious activity targeting my exposed VMs.
+
+📸 Screenshot of My Actual Attack Map
+
+(Stored from your uploaded image — include this in your repo under /images/attack-map.png)
+
+![Global Attack Map](./images/attack-map.png)
+
+
+This map is generated from failed authentication attempts (Windows 4625 events, Linux Syslog failures) enriched with GeoIP latitude and longitude data.
+
+🌐 Attack Map Interpretation
+
+Your map shows:
+
+🔴 High-volume attacks
+
+Large red bubble centered over Europe, indicating thousands of attempts from this region.
+
+🟡 Medium-volume attacks
+
+Yellow clusters originating from Asia, including Japan, the Philippines, and Indonesia.
+
+🟢 Widespread low-volume attempts
+
+Smaller green markers across North America, Africa, and Southeast Asia.
+
+Each bubble represents:
+
+Size → Number of attacks
+
+Color → Severity / volume level
+
+📊 Top Attacker Locations (Extracted from the Map)
+Location	Approx. Count
+Eibar (Spain)	3.9k
+Manila (Philippines)	2.39k
+United States	1.71k
+China	1.18k
+Swelledam (South Africa)	992
+Lucknow (India)	381
+Cianjur (Indonesia)	226
+United States (Secondary Source)	215
+Osaka (Japan)	169
+
+Your honeynet attracted attacks from all over the globe — across four continents.
+
+📈 KQL Queries Used for Log Analysis
+🔹 1. Failed Windows Logons
+SecurityEvent
+| where EventID == 4625
+| project TimeGenerated, Account, IpAddress, Activity
+
+🔹 2. SSH Brute Force Attempts (Linux Syslog)
+Syslog
+| where Facility == "authpriv"
+| where SyslogMessage contains "Failed"
+| project TimeGenerated, HostName, ProcessName, SyslogMessage
+
+🔹 3. GeoIP Enriched Events (Used for Attack Map)
+let GeoIP = _GetWatchlist("geoip");
+SecurityEvent
+| where EventID == 4625
+| evaluate ipv4_lookup(GeoIP, IpAddress, network)
+| summarize Count = count() by Country, Latitude, Longitude
+| order by Count desc
+
+🧠 Conclusion
+
+This project successfully demonstrated how exposed cloud resources are targeted globally, often within minutes of deployment. Using Microsoft Sentinel, I was able to:
+
+Visualize global attack origins
+
+Analyze adversary behavior
+
+Correlate logs using KQL
+
+Build an interactive attack map
+
+Extract meaningful insights from real cyber attack data
+
+This honeynet project strengthened my practical skills in:
+
+Cloud Security
+
+Security Operations (SOC)
+
+Log Parsing & KQL
+
+Sentinel Configuration
+
+Threat Analysis
+
+GeoIP Enrichment
+
+🎉 If you'd like, I can add:
+
+✅ Shields.io badges (Azure, Sentinel, SOC, KQL)
+✅ A repository structure section
+✅ Instructions for reproducing the attack map
+✅ A professional project banner for GitHub
+✅ Step-by-step setup instructions
+
+Just tell me — I can build the full repo structure for you.
