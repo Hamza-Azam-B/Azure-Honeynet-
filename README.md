@@ -78,26 +78,10 @@ Size → Number of attacks
 Color → Severity / volume level
 
 Top Attacker Locations
-Location
-Approx. Count
-Eibar, Spain
-3,900
-Manila, Philippines
-2,390
-United States
-1,710
-China
-1,180
-Swelledam, South Africa
-992
-Lucknow, India
-381
-Cianjur, Indonesia
-226
-United States (Secondary)
-215
-Osaka, Japan
-169
+
+
+<img width="359" height="362" alt="Screenshot 2025-11-23 at 12 40 43 AM" src="https://github.com/user-attachments/assets/dec373b6-db08-4c0a-9f3a-ae20ece35240" />
+
 
 
 
