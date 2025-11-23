@@ -1,114 +1,54 @@
-Azure<img width="1234" height="712" alt="Screenshot 2025-11-22 at 10 18 59 PM" src="https://github.com/user-attachments/assets/78a9c3d9-58e5-49d4-afb7-ec48ade4c361" />
- Honeynet: Simulating Real-World Cyber Attacks
+Honeynet: Simulating Real World Cyber Attacks
+
+<img width="1044" height="596" alt="Screenshot 2025-11-22 at 10 51 52 PM" src="https://github.com/user-attachments/assets/8344233a-f9b3-42f4-9c5d-53e4a7eafe2b" />
 
 Cloud Honeynet / SOC Project
-📘 Introduction
+ Introduction
 
-This project demonstrates my experience building a cloud-based honeynet in Microsoft Azure to observe and analyze real-world cyber attacks. By intentionally exposing virtual machines to the internet, I collected valuable security telemetry that was ingested into Microsoft Sentinel for threat detection, visualization, and log analysis.
+This project demonstrates my experience building a cloud-based honeynet in Microsoft Azure to observe and analyze real world cyber attacks. By intentionally exposing virtual machines to the internet, I collected valuable security data that was depoisted into Microsoft Sentinel for threat detection, visualization, and log analysis.
 
 This hands-on project strengthened my skills in:
 
 Azure cloud architecture
-
 Security operations (SOC)
-
 Kusto Query Language (KQL)
-
 Incident monitoring and detection
-
-Threat intelligence enrichment
-
 Sentinel Workbooks & Watchlists
 
-🎯 Objective
+ Objective
 
-The primary objective was to deploy vulnerable cloud assets to observe:
+Through this honeynet project, I was able to analyze global attack patterns. Adtionally, I was able to document widely dispersed brute-force authentication attempts, malicious network flows, RDP, and SSH exploit attempts against my exposed Azure SOC virtual machine. These real time attacks have given me a foundation into how threat actors function on the open internet. Collecting this data in Azure Sentinel allowed me to visualize attacker activity worldwide and conduct realistic investigations using enriched logs and KQL queries.
 
-Global attack patterns
 
-Brute-force authentication attempts
-
-Malicious network flows
-
-RDP/SMB/SSH exploit attempts
-
-Real-time threat activity targeting exposed Azure VMs
-
-This allowed me to visualize global attacker activity and practice real SOC-style log investigations using Azure Sentinel.
 
 🛠 Technologies & Azure Components Used
-☁️ Azure Cloud Components
 
-Azure Virtual Machines (Windows & Linux)
-
+Azure Virtual Machine (Windows)
 Azure Virtual Network (VNet)
-
 Network Security Groups (NSGs)
-
 Log Analytics Workspace (LAW)
-
 Azure Storage Account
-
 Azure Key Vault
-
 Microsoft Sentinel (SIEM)
-
 Microsoft Defender for Cloud
-
-🔍 Monitoring & Security Tools
-
 Windows Security Event Logs
-
 Linux Syslog
-
 NSG Flow Logs
-
 Sentinel Data Connectors
-
 Watchlists + GeoIP database
-
 Sentinel Workbooks (Attack Map)
 
-PowerShell
 
-Azure CLI
-
-📚 Security Frameworks Referenced
-
-NIST SP 800-53 Rev. 5 – Cloud Security Controls
-
-NIST SP 800-61 Rev. 2 – Incident Handling
-
-🧪 Methodology Overview
-1️⃣ Deploying the Honeynet
-
-Deployed multiple Azure Virtual Machines with intentionally open NSG rules to attract attackers.
-
-2️⃣ Enabling Logging
-
-Sent logs from Windows, Linux, and NSGs into a Log Analytics Workspace.
-
-3️⃣ Connecting Microsoft Sentinel
-
-Sentinel was configured to ingest data, run analytics rules, and visualize real-time attacker activity.
-
-4️⃣ GeoIP Enrichment
-
-A large GeoIP watchlist (54k+ rows) was imported into Sentinel, allowing IP-to-country mapping.
-
-5️⃣ KQL Log Analysis
-
-Used KQL to:
-
-Identify failed logons
-
-Detect SSH/RDP brute-force attempts
-
-Map inbound attacker IP addresses
+Methodology Overview
+Honeynet setup: I started with the deployment of several virtual machines in Azure that were deliberately vulnerable, putting them online to mimic the insecure environment of the real world and entice global hackers.
+Monitoring and Analysis: Azure was set up to ingest logs from the following: Windows Security Events, Linux Syslog, and NSG flow logs to a Log Analytics Workspace. Microsoft Sentinel was used to visualize the attacks, creating an interactive global attack map and querying the collected data using KQL.
+Observation of security metrics: I followed the environment for a period of 24 hours, observing key security metrics such as failed logons, brute-force attempts, and malicious inbound traffic. In this way, I came to understand just how rapidly and with what intensity exposed cloud systems are attacked.
+Log investigation and enrichment: Imported large GeoIP watchlist into Sentinel to enrich attacker IP addresses with geographic data, enabling me to map the origin of the attacks and further analyze global threat patterns.
+SOC Attack Analysis: With the use of KQL, I have investigated authentication failures, network traffic anomalies, and attacker behavior, emulating what a real Security Operations Center analyst might do while responding to attacks via the cloud.
 
 Build attack visualizations
 
-🌍 Global Attack Map (Sentinel Workbook)
+ Global Attack Map (Sentinel Workbook)
 
 Below is the attack map generated directly from my Azure honeynet data. It visualizes all malicious activity targeting my exposed VMs.
 
@@ -122,8 +62,6 @@ Below is the attack map generated directly from my Azure honeynet data. It visua
 This map is generated from failed authentication attempts (Windows 4625 events, Linux Syslog failures) enriched with GeoIP latitude and longitude data.
 
 🌐 Attack Map Interpretation
-
-Your map shows:
 
 🔴 High-volume attacks
 
@@ -205,12 +143,4 @@ Threat Analysis
 
 GeoIP Enrichment
 
-🎉 If you'd like, I can add:
 
-✅ Shields.io badges (Azure, Sentinel, SOC, KQL)
-✅ A repository structure section
-✅ Instructions for reproducing the attack map
-✅ A professional project banner for GitHub
-✅ Step-by-step setup instructions
-
-Just tell me — I can build the full repo structure for you.
