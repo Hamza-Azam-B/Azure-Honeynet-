@@ -8,11 +8,11 @@ This project demonstrates my experience building a cloud-based honeynet in Micro
 
 This hands-on project strengthened my skills in:
 
- Azure cloud architecture
- Security operations (SOC)
- Kusto Query Language (KQL)
- Incident monitoring and detection
- Sentinel Workbooks & Watchlists
+ - Azure cloud architecture
+ - Security operations (SOC)
+ - Kusto Query Language (KQL)
+ - Incident monitoring and detection
+ - Sentinel Workbooks & Watchlists
 
  ## Objective
 
@@ -111,7 +111,7 @@ Color → Severity
 
 ## Conclusion
 
-This SOC honeynet project successfully demonstrated that the cloud resources exposed to attackers from every corner of the globe were attacked, and this usually happens in less than minutes of the systems being deployed. By leveraging Microsoft Sentinel and enriched log data, I visualized global attack origins, analyzed attacker behavior, and correlated log events using KQL. The project offered practical experience in  investigations, ranging from failed logon analysis to RDP/SSH exploit monitoring and network flow inspection, and identifying the value of GeoIP enrichment for mapping of attacker location and understanding global threat patterns. This project enhanced my skills in cloud security, threat analysis, log parsing, Sentinel configuration, and security operations while providing a realistic, hands-on perspective of the challenges involved in the defense of cloud environments. From this lab, we can safely determine that monitoring, analysis, and proactive defense is exteremly important in cloud infrastructures.
+This SOC honeynet effectively showcased how cloud resources, once exposed to attackers from around the world, are typically targeted within minutes of deployment. By leveraging Microsoft Sentinel and enriched log data, I visualized global attack origins, analyzed attacker behavior, and correlated log events using KQL. The project offered practical experience in  investigations, and identifying the value of GeoIP enrichment for mapping of attacker location and understanding global threat patterns. This enhanced my skills in cloud security, threat analysis, log parsing, Sentinel configuration, and security operations while providing a realistic, hands-on perspective of the challenges involved in the defense of cloud environments. From this lab, we can safely determine that monitoring, analysis, and proactive defense is exteremly important in cloud infrastructures.
 
 
 
