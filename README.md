@@ -51,7 +51,7 @@ Log investigation and enrichment:
 - Imported large GeoIP watchlist into Sentinel to enrich attacker IP addresses with geographic data, enabling me to map the origin of the attacks and further analyze global threat patterns.
 
 SOC Attack Analysis: 
-- With the use of KQL, I have investigated authentication failures, network traffic anomalies, and attacker behavior, emulating what a real Security Operations Center analyst might do while responding to attacks via the cloud.
+- With the use of KQL, I have investigated authentication failures, network traffic anomalies, and attacker behavior, essentially emulating  a realistic Security Operations Center cloud enviroment.
 
 
 ## Global Attack Map (Sentinel Workbook)
