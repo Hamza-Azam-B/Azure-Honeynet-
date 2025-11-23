@@ -1,4 +1,4 @@
-Honeynet: Simulating Real World Cyber Attack
+Honeynet: Simulating Real Time Cyber Attacks
 
 <img width="1044" height="596" alt="soc-lab" src="https://github.com/user-attachments/assets/62510417-085f-4296-a466-fb869962348f" />
 
@@ -7,7 +7,7 @@ Cloud Honeynet / SOC Project
 
 This project demonstrates my experience building a cloud-based honeynet in Microsoft Azure to observe and analyze real world cyber attacks. By intentionally exposing virtual machines to the internet, I collected valuable security data that was depoisted into Microsoft Sentinel for threat detection, visualization, and log analysis.
 
-This hands-on project strengthened my skills in:
+## This hands-on project strengthened my skills in:
 
  Azure cloud architecture
  Security operations (SOC)
@@ -40,11 +40,19 @@ Through this honeynet project, I was able to analyze global attack patterns. Adt
 
 
 Methodology Overview
-Honeynet setup: I started with the deployment of several virtual machines in Azure that were deliberately vulnerable, putting them online to mimic the insecure environment of the real world and entice global hackers.
+
+Honeynet setup:
+I started with the deployment of several virtual machines in Azure that were deliberately vulnerable, putting them online to mimic the insecure environment of the real world and entice global hackers.
+
 Monitoring and Analysis: Azure was set up to ingest logs from the following: Windows Security Events, Linux Syslog, and NSG flow logs to a Log Analytics Workspace. Microsoft Sentinel was used to visualize the attacks, creating an interactive global attack map and querying the collected data using KQL.
+
 Observation of security metrics: I followed the environment for a period of 24 hours, observing key security metrics such as failed logons, brute-force attempts, and malicious inbound traffic. In this way, I came to understand just how rapidly and with what intensity exposed cloud systems are attacked.
-Log investigation and enrichment: Imported large GeoIP watchlist into Sentinel to enrich attacker IP addresses with geographic data, enabling me to map the origin of the attacks and further analyze global threat patterns.
-SOC Attack Analysis: With the use of KQL, I have investigated authentication failures, network traffic anomalies, and attacker behavior, emulating what a real Security Operations Center analyst might do while responding to attacks via the cloud.
+
+## Log investigation and enrichment: 
+- Imported large GeoIP watchlist into Sentinel to enrich attacker IP addresses with geographic data, enabling me to map the origin of the attacks and further analyze global threat patterns.
+
+## SOC Attack Analysis: 
+- With the use of KQL, I have investigated authentication failures, network traffic anomalies, and attacker behavior, emulating what a real Security Operations Center analyst might do while responding to attacks via the cloud.
 
 Build attack visualizations
 
@@ -105,24 +113,25 @@ SecurityEvent
 | summarize Count = count() by Country, Latitude, Longitude
 | order by Count desc
 
-**Conclusion.**
+## Conclusion
 
-This project successfully demonstrated how exposed cloud resources are targeted globally, often within minutes of deployment. Using Microsoft Sentinel, I was able to:
+## This project successfully demonstrated how exposed cloud resources are targeted globally, often within minutes of deployment. Using Microsoft Sentinel, I was able to:
 
-Visualize global attack origins
-Analyze adversary behavior
-Correlate logs using KQL
-Build an interactive attack map
-Extract meaningful insights from real cyber attack data
+- Visualize global attack origins
+- Analyze adversary behavior
+- Correlate logs using KQL
+- Build an interactive attack map
+- Extract meaningful insights from real cyber attack data
 
 
-Through this honeynet, I also strengthened my practical skills in several key areas, including:
-Cloud Security
-Security Operations (SOC)
-Log Parsing & KQL
-Sentinel Configuration
-Threat Analysis
-GeoIP Enrichment
+## Through this honeynet, I also strengthened my practical skills in several key areas, including:
+
+- Cloud Security
+- Security Operations (SOC)
+- Log Parsing & KQL
+- Sentinel Configuration
+- Threat Analysis
+- GeoIP Enrichment
 
 
 
