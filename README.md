@@ -111,23 +111,7 @@ Color → Severity
 
 ## Conclusion
 
-This project successfully demonstrated how exposed cloud resources are targeted globally, often within minutes of deployment. Using Microsoft Sentinel, I was able to:
-
-- Visualize global attack origins
-- Analyze adversary behavior
-- Correlate logs using KQL
-- Build an interactive attack map
-- Extract meaningful insights from real cyber attack data
-
-
-Through this honeynet, I also strengthened my practical skills in several key areas, including:
-
-- Cloud Security
-- Security Operations (SOC)
-- Log Parsing & KQL
-- Sentinel Configuration
-- Threat Analysis
-- GeoIP Enrichment
+This SOC honeynet project successfully demonstrated that the cloud resources exposed to attackers from every corner of the globe were attacked, and this usually happens in less than minutes of the systems being deployed. By leveraging Microsoft Sentinel and enriched log data, I visualized global attack origins, analyzed attacker behavior, and correlated log events using KQL. The project offered practical experience in  investigations, ranging from failed logon analysis to RDP/SSH exploit monitoring and network flow inspection, and identifying the value of GeoIP enrichment for mapping of attacker location and understanding global threat patterns. This project enhanced my skills in cloud security, threat analysis, log parsing, Sentinel configuration, and security operations while providing a realistic, hands-on perspective of the challenges involved in the defense of cloud environments. From this lab, we can safely determine that monitoring, analysis, and proactive defense is exteremly important in cloud infrastructures.
 
 
 
