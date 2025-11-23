@@ -3,40 +3,40 @@ Honeynet: Simulating Real World Cyber Attack
 <img width="1044" height="596" alt="soc-lab" src="https://github.com/user-attachments/assets/62510417-085f-4296-a466-fb869962348f" />
 
 Cloud Honeynet / SOC Project
- Introduction
+ ## Introduction
 
 This project demonstrates my experience building a cloud-based honeynet in Microsoft Azure to observe and analyze real world cyber attacks. By intentionally exposing virtual machines to the internet, I collected valuable security data that was depoisted into Microsoft Sentinel for threat detection, visualization, and log analysis.
 
 This hands-on project strengthened my skills in:
 
-Azure cloud architecture
-Security operations (SOC)
-Kusto Query Language (KQL)
-Incident monitoring and detection
-Sentinel Workbooks & Watchlists
+ Azure cloud architecture
+ Security operations (SOC)
+ Kusto Query Language (KQL)
+ Incident monitoring and detection
+ Sentinel Workbooks & Watchlists
 
- Objective
+ ## Objective
 
 Through this honeynet project, I was able to analyze global attack patterns. Adtionally, I was able to document widely dispersed brute-force authentication attempts, malicious network flows, RDP, and SSH exploit attempts against my exposed Azure SOC virtual machine. These real time attacks have given me a foundation into how threat actors function on the open internet. Collecting this data in Azure Sentinel allowed me to visualize attacker activity worldwide and conduct realistic investigations using enriched logs and KQL queries.
 
 
 
- Technologies & Azure Components Used
+ ## Technologies & Azure Components Used
 
-Azure Virtual Machine (Windows)
-Azure Virtual Network (VNet)
-Network Security Groups (NSGs)
-Log Analytics Workspace (LAW)
-Azure Storage Account
-Azure Key Vault
-Microsoft Sentinel (SIEM)
-Microsoft Defender for Cloud
-Windows Security Event Logs
-Linux Syslog
-NSG Flow Logs
-Sentinel Data Connectors
-Watchlists + GeoIP database
-Sentinel Workbooks (Attack Map)
+- Azure Virtual Machine (Windows)
+- Azure Virtual Network (VNet)
+- Network Security Groups (NSGs)
+- Log Analytics Workspace (LAW)
+- Azure Storage Account
+- Azure Key Vault
+- Microsoft Sentinel (SIEM)
+- Microsoft Defender for Cloud
+- Windows Security Event Logs
+- Linux Syslog
+- NSG Flow Logs
+- Sentinel Data Connectors
+- Watchlists + GeoIP database
+- Sentinel Workbooks (Attack Map)
 
 
 Methodology Overview
@@ -59,15 +59,15 @@ This map is generated from failed authentication attempts (Windows 4625 events, 
 
  Attack Map Interpretation
 
-🔴 High-volume attacks
+ High-volume attacks
 
 Large red bubble centered over Europe, indicating thousands of attempts from this region.
 
-🟡 Medium-volume attacks
+ Medium-volume attacks
 
 Yellow clusters originating from Asia, including Japan, the Philippines, and Indonesia.
 
-🟢 Widespread low-volume attempts
+ Widespread low-volume attempts
 
 Smaller green markers across North America, Africa, and Southeast Asia.
 
@@ -75,7 +75,7 @@ Each bubble represents:
 
 Size → Number of attacks
 
-Color → Severity / volume level
+Color → Severity 
 
 Top Attacker Locations
 
@@ -85,19 +85,19 @@ Top Attacker Locations
 
 
 
-📈 KQL Queries Used for Log Analysis
-🔹 1. Failed Windows Logons
+ KQL Queries Used for Log Analysis
+ Failed Windows Logons
 SecurityEvent
 | where EventID == 4625
 | project TimeGenerated, Account, IpAddress, Activity
 
-🔹 2. SSH Brute Force Attempts (Linux Syslog)
+SSH Brute Force Attempts (Linux Syslog)
 Syslog
 | where Facility == "authpriv"
 | where SyslogMessage contains "Failed"
 | project TimeGenerated, HostName, ProcessName, SyslogMessage
 
-🔹 3. GeoIP Enriched Events (Used for Attack Map)
+GeoIP Enriched Events (Used for Attack Map)
 let GeoIP = _GetWatchlist("geoip");
 SecurityEvent
 | where EventID == 4625
@@ -105,38 +105,24 @@ SecurityEvent
 | summarize Count = count() by Country, Latitude, Longitude
 | order by Count desc
 
-🧠 Conclusion
+**Conclusion.**
 
 This project successfully demonstrated how exposed cloud resources are targeted globally, often within minutes of deployment. Using Microsoft Sentinel, I was able to:
+
 Visualize global attack origins
-
-
 Analyze adversary behavior
-
-
 Correlate logs using KQL
-
-
 Build an interactive attack map
-
-
 Extract meaningful insights from real cyber attack data
 
 
-Through this honeynet, I strengthened my practical skills in areas including:
+Through this honeynet, I also strengthened my practical skills in several key areas, including:
 Cloud Security
-
-
 Security Operations (SOC)
-
-
 Log Parsing & KQL
-
-
 Sentinel Configuration
-
-
 Threat Analysis
-
-
 GeoIP Enrichment
+
+
+
