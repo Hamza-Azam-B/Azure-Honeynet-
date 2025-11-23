@@ -6,7 +6,7 @@
 
 This project demonstrates my experience building a cloud-based honeynet in Microsoft Azure to observe and analyze real world cyber attacks. By intentionally exposing my virtual machine to the internet, I collected valuable security data that was depoisted into Microsoft Sentinel for threat detection, visualization, and log analysis.
 
-## This hands-on project strengthened my skills in:
+This hands-on project strengthened my skills in:
 
  Azure cloud architecture
  Security operations (SOC)
@@ -16,7 +16,7 @@ This project demonstrates my experience building a cloud-based honeynet in Micro
 
  ## Objective
 
-Through this honeynet project, I was able to analyze global attack patterns. Adtionally, I was able to document widely dispersed brute-force authentication attempts, malicious network flows, RDP, and SSH exploit attempts against my exposed Azure SOC virtual machine. These real time attacks have given me a foundation into how threat actors function on the open internet. Collecting this data in Azure Sentinel allowed me to visualize attacker activity worldwide and conduct realistic investigations using enriched logs and KQL queries.
+Through this honeynet project, I was able to analyze global attack patterns. Adtionally, I was able to document widely dispersed brute-force authentication attempts, malicious network flows, and RDP exploit attempts against my exposed Azure SOC virtual machine. These real time attacks have given me a foundation into how threat actors function on the open internet. Collecting this data in Azure Sentinel allowed me to visualize attacker activity worldwide and conduct realistic investigations using enriched logs and KQL queries.
 
 
 
@@ -39,13 +39,13 @@ Through this honeynet project, I was able to analyze global attack patterns. Adt
 ## Methodology Overview
 
 Honeynet setup:
-- I started with the deployment of my windows 11 virtual machine in Azure that were deliberately vulnerable, putting them online to mimic the insecure environment of the real world and entice global hackers.
+- I started with the deployment of my windows 11 virtual machine in Azure that was deliberately vulnerable, putting them online to mimic the insecure environment of the real world and entice threat actors.
 
 Monitoring and Analysis: 
-- Azure was set up to ingest logs from the following: Windows Security Events, Linux Syslog, and NSG flow logs to a Log Analytics Workspace. Microsoft Sentinel was used to visualize the attacks, creating an interactive global attack map and querying the collected data using KQL.
+- Azure was set up to ingest logs from the Windows Security Event. Microsoft Sentinel was used to visualize the attacks, creating an interactive global attack map and querying the collected data using KQL.
 
 Observation of security metrics:
-- I followed the environment for a period of 24 hours, observing key security metrics such as failed logons, brute-force attempts, and malicious inbound traffic. In this way, I came to understand just how rapidly and with what intensity exposed cloud systems are attacked.
+- I followed the environment for a period of 24 hours, observing key security metrics such as failed logons, brute-force attempts, and malicious inbound traffic. By doing this, I came to understand just how rapidly and with what intensity exposed cloud systems are attacked.
 
 Log investigation and enrichment: 
 - Imported large GeoIP watchlist into Sentinel to enrich attacker IP addresses with geographic data, enabling me to map the origin of the attacks and further analyze global threat patterns.
