@@ -1,13 +1,13 @@
-Honeynet: Simulating Real World Cyber Attacks
+Honeynet: Simulating Real World Cyber Attack
 
-<img width="1044" height="596" alt="Screenshot 2025-11-22 at 10 51 52 PM" src="https://github.com/user-attachments/assets/8344233a-f9b3-42f4-9c5d-53e4a7eafe2b" />
+<img width="1044" height="596" alt="soc-lab" src="https://github.com/user-attachments/assets/62510417-085f-4296-a466-fb869962348f" />
 
 Cloud Honeynet / SOC Project
- **Introduction.**
+ Introduction
 
 This project demonstrates my experience building a cloud-based honeynet in Microsoft Azure to observe and analyze real world cyber attacks. By intentionally exposing virtual machines to the internet, I collected valuable security data that was depoisted into Microsoft Sentinel for threat detection, visualization, and log analysis.
 
-**This hands-on project strengthened my skills in:.**
+This hands-on project strengthened my skills in:
 
 Azure cloud architecture
 Security operations (SOC)
@@ -21,7 +21,7 @@ Through this honeynet project, I was able to analyze global attack patterns. Adt
 
 
 
-🛠 Technologies & Azure Components Used
+ Technologies & Azure Components Used
 
 Azure Virtual Machine (Windows)
 Azure Virtual Network (VNet)
@@ -52,16 +52,12 @@ Build attack visualizations
 
 Below is the attack map generated directly from my Azure honeynet data. It visualizes all malicious activity targeting my exposed VMs.
 
-📸 Screenshot of My Actual Attack Map
-
-(Stored from your uploaded image — include this in your repo under /images/attack-map.png)
-
-![Global Attack Map](./images/attack-map.png)
+<img width="1234" height="712" alt="Screenshot 2025-11-22 at 10 18 59 PM" src="https://github.com/user-attachments/assets/20fbbd20-8d3e-4864-b835-cdee14c8aea7" />
 
 
 This map is generated from failed authentication attempts (Windows 4625 events, Linux Syslog failures) enriched with GeoIP latitude and longitude data.
 
-🌐 Attack Map Interpretation
+ Attack Map Interpretation
 
 🔴 High-volume attacks
 
@@ -81,19 +77,29 @@ Size → Number of attacks
 
 Color → Severity / volume level
 
-📊 Top Attacker Locations (Extracted from the Map)
-Location	Approx. Count
-Eibar (Spain)	3.9k
-Manila (Philippines)	2.39k
-United States	1.71k
-China	1.18k
-Swelledam (South Africa)	992
-Lucknow (India)	381
-Cianjur (Indonesia)	226
-United States (Secondary Source)	215
-Osaka (Japan)	169
+Top Attacker Locations
+Location
+Approx. Count
+Eibar, Spain
+3,900
+Manila, Philippines
+2,390
+United States
+1,710
+China
+1,180
+Swelledam, South Africa
+992
+Lucknow, India
+381
+Cianjur, Indonesia
+226
+United States (Secondary)
+215
+Osaka, Japan
+169
 
-Your honeynet attracted attacks from all over the globe — across four continents.
+
 
 📈 KQL Queries Used for Log Analysis
 🔹 1. Failed Windows Logons
@@ -118,29 +124,35 @@ SecurityEvent
 🧠 Conclusion
 
 This project successfully demonstrated how exposed cloud resources are targeted globally, often within minutes of deployment. Using Microsoft Sentinel, I was able to:
-
 Visualize global attack origins
+
 
 Analyze adversary behavior
 
+
 Correlate logs using KQL
+
 
 Build an interactive attack map
 
+
 Extract meaningful insights from real cyber attack data
 
-This honeynet project strengthened my practical skills in:
 
+Through this honeynet, I strengthened my practical skills in areas including:
 Cloud Security
+
 
 Security Operations (SOC)
 
+
 Log Parsing & KQL
+
 
 Sentinel Configuration
 
+
 Threat Analysis
 
+
 GeoIP Enrichment
-
-
