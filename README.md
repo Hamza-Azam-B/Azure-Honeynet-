@@ -2,10 +2,9 @@
 
 <img width="1044" height="596" alt="soc-lab" src="https://github.com/user-attachments/assets/62510417-085f-4296-a466-fb869962348f" />
 
-Cloud Honeynet / SOC Project
  ## Introduction
 
-This project demonstrates my experience building a cloud-based honeynet in Microsoft Azure to observe and analyze real world cyber attacks. By intentionally exposing virtual machines to the internet, I collected valuable security data that was depoisted into Microsoft Sentinel for threat detection, visualization, and log analysis.
+This project demonstrates my experience building a cloud-based honeynet in Microsoft Azure to observe and analyze real world cyber attacks. By intentionally exposing my virtual machine to the internet, I collected valuable security data that was depoisted into Microsoft Sentinel for threat detection, visualization, and log analysis.
 
 ## This hands-on project strengthened my skills in:
 
@@ -32,8 +31,6 @@ Through this honeynet project, I was able to analyze global attack patterns. Adt
 - Microsoft Sentinel (SIEM)
 - Microsoft Defender for Cloud
 - Windows Security Event Logs
-- Linux Syslog
-- NSG Flow Logs
 - Sentinel Data Connectors
 - Watchlists + GeoIP database
 - Sentinel Workbooks (Attack Map)
@@ -42,7 +39,7 @@ Through this honeynet project, I was able to analyze global attack patterns. Adt
 ## Methodology Overview
 
 Honeynet setup:
-- I started with the deployment of several virtual machines in Azure that were deliberately vulnerable, putting them online to mimic the insecure environment of the real world and entice global hackers.
+- I started with the deployment of my windows 11 virtual machine in Azure that were deliberately vulnerable, putting them online to mimic the insecure environment of the real world and entice global hackers.
 
 Monitoring and Analysis: 
 - Azure was set up to ingest logs from the following: Windows Security Events, Linux Syslog, and NSG flow logs to a Log Analytics Workspace. Microsoft Sentinel was used to visualize the attacks, creating an interactive global attack map and querying the collected data using KQL.
@@ -94,7 +91,7 @@ Color → Severity
 
 
 
- ## KQL Queries Used to determine time generarted, ip adress, countryname, cityname
+ ## KQL Query used to determine TimeGenerarted, Actvity IPAdress, countryname, cityname
  
 
 <img width="1434" height="674" alt="Screenshot 2025-11-23 at 1 55 27 AM" src="https://github.com/user-attachments/assets/718fe863-1873-42e7-bda0-5e3ef2b25c7c" />
@@ -105,13 +102,12 @@ Color → Severity
 
  
 
-GeoIP Enriched Events (Used for Attack Map)
-let GeoIP = _GetWatchlist("geoip");
-SecurityEvent
-| where EventID == 4625
-| evaluate ipv4_lookup(GeoIP, IpAddress, network)
-| summarize Count = count() by Country, Latitude, Longitude
-| order by Count desc
+## GeoIP Enriched Events (Used for Attack Map)
+
+
+<img width="1434" height="666" alt="Screenshot 2025-11-23 at 2 29 00 AM" src="https://github.com/user-attachments/assets/ac62639b-a2a8-4337-ad48-d47bb356b6e7" />
+
+
 
 ## Conclusion
 
