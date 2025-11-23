@@ -94,11 +94,14 @@ Color → Severity
 
 
 
- ## KQL Queries Used for Log Analysis
+ ## KQL Queries Used to determine time generarted, ip adress, countryname, cityname
  
-<img width="1426" height="669" alt="Screenshot 2025-11-23 at 1 33 58 AM" src="https://github.com/user-attachments/assets/ad3907e5-f40c-4fe4-84ba-222b7b763677" />
 
 <img width="1434" height="674" alt="Screenshot 2025-11-23 at 1 55 27 AM" src="https://github.com/user-attachments/assets/718fe863-1873-42e7-bda0-5e3ef2b25c7c" />
+
+ ## KQL Query to find the most number of attack sources
+ 
+ <img width="1436" height="672" alt="Screenshot 2025-11-23 at 2 06 06 AM" src="https://github.com/user-attachments/assets/d03993fd-41b1-4f36-aa80-af7e003c45f5" />
 
  
 
