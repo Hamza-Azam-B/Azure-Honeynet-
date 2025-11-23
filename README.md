@@ -39,24 +39,25 @@ Through this honeynet project, I was able to analyze global attack patterns. Adt
 - Sentinel Workbooks (Attack Map)
 
 
-Methodology Overview
+## Methodology Overview
 
 Honeynet setup:
-I started with the deployment of several virtual machines in Azure that were deliberately vulnerable, putting them online to mimic the insecure environment of the real world and entice global hackers.
+- I started with the deployment of several virtual machines in Azure that were deliberately vulnerable, putting them online to mimic the insecure environment of the real world and entice global hackers.
 
-Monitoring and Analysis: Azure was set up to ingest logs from the following: Windows Security Events, Linux Syslog, and NSG flow logs to a Log Analytics Workspace. Microsoft Sentinel was used to visualize the attacks, creating an interactive global attack map and querying the collected data using KQL.
+Monitoring and Analysis: 
+- Azure was set up to ingest logs from the following: Windows Security Events, Linux Syslog, and NSG flow logs to a Log Analytics Workspace. Microsoft Sentinel was used to visualize the attacks, creating an interactive global attack map and querying the collected data using KQL.
 
-Observation of security metrics: I followed the environment for a period of 24 hours, observing key security metrics such as failed logons, brute-force attempts, and malicious inbound traffic. In this way, I came to understand just how rapidly and with what intensity exposed cloud systems are attacked.
+Observation of security metrics:
+- I followed the environment for a period of 24 hours, observing key security metrics such as failed logons, brute-force attempts, and malicious inbound traffic. In this way, I came to understand just how rapidly and with what intensity exposed cloud systems are attacked.
 
-## Log investigation and enrichment: 
+Log investigation and enrichment: 
 - Imported large GeoIP watchlist into Sentinel to enrich attacker IP addresses with geographic data, enabling me to map the origin of the attacks and further analyze global threat patterns.
 
-## SOC Attack Analysis: 
+SOC Attack Analysis: 
 - With the use of KQL, I have investigated authentication failures, network traffic anomalies, and attacker behavior, emulating what a real Security Operations Center analyst might do while responding to attacks via the cloud.
 
-Build attack visualizations
 
- Global Attack Map (Sentinel Workbook)
+## Global Attack Map (Sentinel Workbook)
 
 Below is the attack map generated directly from my Azure honeynet data. It visualizes all malicious activity targeting my exposed VMs.
 
@@ -65,19 +66,19 @@ Below is the attack map generated directly from my Azure honeynet data. It visua
 
 This map is generated from failed authentication attempts (Windows 4625 events, Linux Syslog failures) enriched with GeoIP latitude and longitude data.
 
- Attack Map Interpretation
+ ## Attack Map Interpretation
 
  High-volume attacks
 
-Large red bubble centered over Europe, indicating thousands of attempts from this region.
+- Large red bubble centered over Europe, indicating thousands of attempts from this region.
 
  Medium-volume attacks
 
-Yellow clusters originating from Asia, including Japan, the Philippines, and Indonesia.
+- Yellow clusters originating from Asia, including Japan, the Philippines, and Indonesia.
 
  Widespread low-volume attempts
 
-Smaller green markers across North America, Africa, and Southeast Asia.
+- Smaller green markers across North America, Africa, and Southeast Asia.
 
 Each bubble represents:
 
@@ -85,7 +86,7 @@ Size → Number of attacks
 
 Color → Severity 
 
-Top Attacker Locations
+## Top Attacker Locations
 
 
 <img width="359" height="362" alt="Screenshot 2025-11-23 at 12 40 43 AM" src="https://github.com/user-attachments/assets/dec373b6-db08-4c0a-9f3a-ae20ece35240" />
@@ -115,7 +116,7 @@ SecurityEvent
 
 ## Conclusion
 
-## This project successfully demonstrated how exposed cloud resources are targeted globally, often within minutes of deployment. Using Microsoft Sentinel, I was able to:
+This project successfully demonstrated how exposed cloud resources are targeted globally, often within minutes of deployment. Using Microsoft Sentinel, I was able to:
 
 - Visualize global attack origins
 - Analyze adversary behavior
@@ -124,7 +125,7 @@ SecurityEvent
 - Extract meaningful insights from real cyber attack data
 
 
-## Through this honeynet, I also strengthened my practical skills in several key areas, including:
+Through this honeynet, I also strengthened my practical skills in several key areas, including:
 
 - Cloud Security
 - Security Operations (SOC)
