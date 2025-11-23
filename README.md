@@ -1,4 +1,6 @@
-Azure Honeynet: Simulating Real-World Cyber Attacks
+Azure<img width="1234" height="712" alt="Screenshot 2025-11-22 at 10 18 59 PM" src="https://github.com/user-attachments/assets/78a9c3d9-58e5-49d4-afb7-ec48ade4c361" />
+ Honeynet: Simulating Real-World Cyber Attacks
+
 Cloud Honeynet / SOC Project
 📘 Introduction
 
