@@ -1,4 +1,4 @@
-Honeynet: Simulating Real Time Cyber Attacks
+## Honeynet: Simulating Real Time Cyber Attacks
 
 <img width="1044" height="596" alt="soc-lab" src="https://github.com/user-attachments/assets/62510417-085f-4296-a466-fb869962348f" />
 
@@ -94,17 +94,13 @@ Color → Severity
 
 
 
- KQL Queries Used for Log Analysis
- Failed Windows Logons
-SecurityEvent
-| where EventID == 4625
-| project TimeGenerated, Account, IpAddress, Activity
+ ## KQL Queries Used for Log Analysis
+ 
+<img width="1426" height="669" alt="Screenshot 2025-11-23 at 1 33 58 AM" src="https://github.com/user-attachments/assets/ad3907e5-f40c-4fe4-84ba-222b7b763677" />
 
-SSH Brute Force Attempts (Linux Syslog)
-Syslog
-| where Facility == "authpriv"
-| where SyslogMessage contains "Failed"
-| project TimeGenerated, HostName, ProcessName, SyslogMessage
+<img width="1434" height="674" alt="Screenshot 2025-11-23 at 1 55 27 AM" src="https://github.com/user-attachments/assets/718fe863-1873-42e7-bda0-5e3ef2b25c7c" />
+
+ 
 
 GeoIP Enriched Events (Used for Attack Map)
 let GeoIP = _GetWatchlist("geoip");
