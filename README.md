@@ -3,11 +3,11 @@ Honeynet: Simulating Real World Cyber Attacks
 <img width="1044" height="596" alt="Screenshot 2025-11-22 at 10 51 52 PM" src="https://github.com/user-attachments/assets/8344233a-f9b3-42f4-9c5d-53e4a7eafe2b" />
 
 Cloud Honeynet / SOC Project
- Introduction
+ **Introduction.**
 
 This project demonstrates my experience building a cloud-based honeynet in Microsoft Azure to observe and analyze real world cyber attacks. By intentionally exposing virtual machines to the internet, I collected valuable security data that was depoisted into Microsoft Sentinel for threat detection, visualization, and log analysis.
 
-This hands-on project strengthened my skills in:
+**This hands-on project strengthened my skills in:.**
 
 Azure cloud architecture
 Security operations (SOC)
